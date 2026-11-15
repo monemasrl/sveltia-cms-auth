@@ -44,11 +44,17 @@ Once deployed, open your Cloudflare Workers dashboard, select the `sveltia-cms-a
 
 #### Alternative: Deploy to Vercel
 
-The same code also runs as a [Vercel Function](https://vercel.com/docs/functions). Sign up with Vercel, and click the button below to start deploying.
+The same code also runs as a [Vercel Function](https://vercel.com/docs/functions). The Deploy button below asks for the `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET` and `ALLOWED_DOMAINS` environment variables described in Step 3, so the GitHub App has to exist first, before you know the Vercel URL:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmonemasrl%2Fsveltia-cms-auth&project-name=sveltia-cms-auth&repository-name=sveltia-cms-auth)
+1. Complete Step 2 with a temporary Redirect URI, such as `https://example.com/callback`, and keep the Client ID and secret at hand.
+1. Sign up with Vercel, click the button below and enter the environment variables when prompted.
 
-Alternatively, you can clone the project and run [`vercel deploy --prod`](https://vercel.com/docs/cli/deploy) locally. No framework preset or build command is needed. Use the production URL (`https://<PROJECT>.vercel.app` or your custom domain) wherever this guide mentions the Worker URL, and add the environment variables in Step 3 under the project’s **Settings** > **Environment Variables** instead, then redeploy.
+   [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmonemasrl%2Fsveltia-cms-auth&project-name=sveltia-cms-auth&repository-name=sveltia-cms-auth&env=GITHUB_CLIENT_ID%2CGITHUB_CLIENT_SECRET%2CALLOWED_DOMAINS&envDescription=Client%20ID%20and%20client%20secret%20of%20your%20GitHub%20App%2C%20and%20the%20hostnames%20of%20your%20site%20allowed%20to%20sign%20in%20%28comma-separated%2C%20e.g.%20www.example.com%29.&envLink=https%3A%2F%2Fgithub.com%2Fmonemasrl%2Fsveltia-cms-auth%23step-3-configure-the-worker)
+
+1. Once deployed, copy the production URL (`https://<PROJECT>.vercel.app` or your custom domain), and replace the Redirect URI in the GitHub App’s **General** settings with `<YOUR_VERCEL_URL>/callback`.
+1. Use the production URL as the Worker URL in Step 4. Step 3 is already done; to change a variable later, go to the project’s **Settings** > **Environment Variables**, then redeploy.
+
+Alternatively, you can clone the project and run [`vercel deploy --prod`](https://vercel.com/docs/cli/deploy) locally, then follow Step 2 and Step 3, adding the environment variables to the Vercel project as described above. No framework preset or build command is needed.
 
 <!-- prettier-ignore-start -->
 > [!IMPORTANT]
