@@ -42,6 +42,19 @@ Alternatively, you can clone the project and run [`wrangler deploy`](https://dev
 
 Once deployed, open your Cloudflare Workers dashboard, select the `sveltia-cms-auth` service, then the Worker URL (`https://sveltia-cms-auth.<SUBDOMAIN>.workers.dev`) will be displayed. Copy it for Step 2. It will also be used in Step 4.
 
+#### Alternative: Deploy to Vercel
+
+The same code also runs as a [Vercel Function](https://vercel.com/docs/functions). Sign up with Vercel, and click the button below to start deploying.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmonemasrl%2Fsveltia-cms-auth&project-name=sveltia-cms-auth&repository-name=sveltia-cms-auth)
+
+Alternatively, you can clone the project and run [`vercel deploy --prod`](https://vercel.com/docs/cli/deploy) locally. No framework preset or build command is needed. Use the production URL (`https://<PROJECT>.vercel.app` or your custom domain) wherever this guide mentions the Worker URL, and add the environment variables in Step 3 under the project’s **Settings** > **Environment Variables** instead, then redeploy.
+
+<!-- prettier-ignore-start -->
+> [!IMPORTANT]
+> Always use the production URL. Vercel’s [Deployment Protection](https://vercel.com/docs/deployment-protection) requires a Vercel sign-in on preview deployments by default, which breaks the sign-in popup. Also note that Vercel’s free Hobby plan is limited to non-commercial, personal use.
+<!-- prettier-ignore-end -->
+
 ### Step 2. Register the Worker as a GitHub App
 
 Open the [Register new GitHub App page](https://github.com/settings/apps/new?name=Sveltia+CMS+Auth+for+YOUR_SITE&url=https://github.com/sveltia/sveltia-cms-auth&webhook_active=false&contents=write&pull_requests=write) on GitHub ([details](https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/registering-a-github-app)). This link pre-fills most fields for you. To register the app under an organization instead of your personal account, replace `https://github.com/settings/apps/new` in the link with `https://github.com/organizations/YOUR_ORG/settings/apps/new`.
